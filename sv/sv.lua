@@ -5,7 +5,7 @@ RegisterNetEvent('sni:openotherinventory')
 AddEventHandler('sni:openotherinventory', function(id)
     src = source 
     local xPlayer = ESX.GetPlayerFromId(source)
-	local items   = xPlayer.inventory
+    local items   = xPlayer.inventory
     TriggerClientEvent('sni:cl:openanyinv', src, items, id)
 end)
 
