@@ -112,7 +112,3 @@ AddEventHandler('sni:cl:openanyinv', function(inv, id)
     _menuPool:MouseEdgeEnabled (false)
     _menuPool:ControlDisablingEnabled(false)  
 end)
-
-RegisterCommand("test", function()
-    TriggerServerEvent("sni:openotherinventory", 3)
-end)
