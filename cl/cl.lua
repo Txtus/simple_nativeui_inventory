@@ -89,3 +89,30 @@ function inventory()
     _menuPool:ControlDisablingEnabled(false)  
 end
 
+RegisterNetEvent('sni:cl:openanyinv')
+AddEventHandler('sni:cl:openanyinv', function(inv, id)
+    otherinv = NativeUI.CreateMenu("Inventar von ID: "..id, "Gegenstände")
+    _menuPool:Add(otherinv) 
+    for k, v in pairs(inv) do
+        if v.count > 0 then 
+            item = NativeUI.CreateItem(v.label.." "..v.count.."x ", v.label .." nehmen")
+            otherinv:AddItem(item)
+            otherinv.OnItemSelect = function(sender, item, index)
+                if item == item then 
+                    TriggerServerEvent("sni:takeitem", v.name, v.count, id)
+                    _menuPool:CloseAllMenus()
+                    TriggerServerEvent("sni:openotherinventory", id)
+                end
+            end
+        end
+    end
+    otherinv:Visible(true) 
+    _menuPool:RefreshIndex()
+    _menuPool:MouseControlsEnabled (false)
+    _menuPool:MouseEdgeEnabled (false)
+    _menuPool:ControlDisablingEnabled(false)  
+end)
+
+RegisterCommand("test", function()
+    TriggerServerEvent("sni:openotherinventory", 3)
+end)
