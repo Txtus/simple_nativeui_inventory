@@ -4,7 +4,7 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 RegisterNetEvent('sni:openotherinventory')
 AddEventHandler('sni:openotherinventory', function(id)
     src = source 
-    local xPlayer = ESX.GetPlayerFromId(source)
+    local xPlayer = ESX.GetPlayerFromId(id)
     local items   = xPlayer.inventory
     TriggerClientEvent('sni:cl:openanyinv', src, items, id)
 end)
